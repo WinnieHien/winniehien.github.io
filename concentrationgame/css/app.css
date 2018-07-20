@@ -1,0 +1,399 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    font-family: 'Coda', cursive;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.deck .card {
+    height: 125px;
+    width: 125px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.deck .card.open {
+    transform: rotateY(0);
+    background: #02b3e4;
+    cursor: default;
+}
+
+.deck .card.show {
+    font-size: 33px;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #02ccba;
+    font-size: 33px;
+}
+
+.locked {
+  pointer-events: none;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+ .score-panel {
+     text-align: left;
+     width: 100%;
+     max-width: 640px;
+     margin-bottom: 10px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding-left: .5em;
+     padding-right: .5em;
+ }
+
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+    width: 125px;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+    padding: 0 .3em 0 0;
+
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}
+
+.win_lose_msg {
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  color: #9370DB;
+  margin: 0 0 .5em 0;
+}
+
+.timer {
+    width: 150px;
+    padding: 0 2em 0 2em;
+    text-align: center;
+}
+
+.movesCounter {
+    padding: 0 0 0 2em;
+    text-align: center;
+}
+
+.red {
+    color: red;
+    font-style: italic;
+}
+
+.stats li {
+    list-style: none;
+    padding-left: 0.1em;
+}
+
+.stats {
+    padding: .5em 0 .5em 0;
+    margin: 0;
+}
+
+.starsContainer {
+    display: flex;
+}
+
+.starStats {
+    display:inline-flex;
+}
+
+.statsContainer {
+    padding: 0 1.5em 0 1.5em;
+}
+
+.gamestats {
+    margin: 0;
+    padding: 0;
+}
+
+.restart {
+    cursor: pointer;
+}
+
+.replayButton {
+    cursor: pointer;
+    font-size: large;
+}
+
+.closeButton {
+    cursor: pointer;
+}
+.replayContainer {
+    text-align: center;
+}
+
+.closebtnContainer {
+    text-align: right;
+    font-size: x-large;
+}
+
+.pop_up {
+    padding-top: .1em;
+    border-radius: 8px;
+    box-shadow: 5px 2px 15px 2px rgba(46, 61, 73, 0.5);
+}
+
+/*
+ * Mobile Optimization: Media Queries
+ */
+
+/* Optimized for iPhone 5/SE 320px*/
+@media screen and (min-width: 0px) {
+
+    .deck {
+        width: 100%;
+        min-width: 315px;
+        min-height: 315px;
+        padding: .5em;
+    }
+    .deck .card {
+        height: 70px;
+        width: 70px;
+    }
+
+    .score-panel .stars li {
+        padding: 0;
+        font-size: 15px;
+    }
+
+    .deck .card.show {
+        font-size: 26px;
+    }
+
+    .deck .card.match {
+        font-size: 26px;
+    }
+
+    .movesCounter {
+        padding: 0;
+    }
+
+}
+
+/* Optimized for iPhone 6 375px */
+
+@media screen and (min-width: 360px)  {
+    .deck {
+        min-width: 370px;
+        min-height: 370px;
+    }
+    .deck .card {
+        height: 80px;
+        width: 80px;
+    }
+}
+
+
+/* TODO: Add the MAX for media queries here at 455px */
+
+/* Optimized for iPhone 6+ 414px*/
+@media screen and (min-width: 414px) {
+
+    .deck {
+        min-width: 410px;
+        min-height: 410px;
+        padding: 1em;
+    }
+    .deck .card {
+        height: 85px;
+        width: 85px;
+    }
+
+    .deck .card.show {
+        font-size: 30px;
+    }
+
+    .deck .card.match {
+        font-size: 30px;
+    }
+
+}
+
+@media screen and (min-width: 455px) {
+
+    .deck {
+        min-width: 450px;
+        min-height: 450px;
+        padding: 1em;
+    }
+    .deck .card {
+        height: 100px;
+        width: 100px;
+    }
+
+    .deck .card.show {
+        font-size: 30px;
+    }
+
+    .deck .card.match {
+        font-size: 30px;
+    }
+
+}
+
+@media screen and (min-width: 530px) {
+
+    .deck {
+        min-width: 520px;
+        min-height: 520px;
+        padding: 1em;
+    }
+    .deck .card {
+        height: 115px;
+        width: 115px;
+    }
+
+    .deck .card.show {
+        font-size: 30px;
+    }
+
+    .deck .card.match {
+        font-size: 30px;
+    }
+
+}
+
+@media screen and (min-width: 600px) {
+
+    .deck {
+        min-width: 580px;
+        min-height: 580px;
+        padding: 1.5em;
+    }
+    .deck .card {
+        height: 125px;
+        width: 125px;
+    }
+
+    .deck .card.show {
+        font-size: 32px;
+    }
+
+    .deck .card.match {
+        font-size: 32px;
+    }
+
+}
+
+
+/* Resetting the page to max once it hits width = 660px  */
+
+/* TODO: Is there a way to do this with min-width and max-width in the media query so it's not repeated?  */
+
+@media screen and (min-width: 660px) {
+
+
+        .deck {
+            width: 660px;
+            min-height: 680px;
+            padding: 32px;
+        }
+        .deck .card {
+            height: 120px;
+            width: 120px;
+        }
+        .score-panel .stars {
+            width: 150px;
+        }
+        .score-panel .stars li {
+            padding: 0 .3em 0 0;
+            font-size: 20px;
+        }
+
+        .deck .card.show {
+            font-size: 33px;
+        }
+
+        .deck .card.match {
+            font-size: 33px;
+        }
+
+        .movesCounter {
+            padding: 0 0 0 2em;
+        }
+
+        .statsContainer {
+            padding-left: 2em;
+            padding-right: 2em;
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+/*
+
+TODO: Move modal box up */
