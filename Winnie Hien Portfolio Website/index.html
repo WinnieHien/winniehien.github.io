@@ -1,0 +1,70 @@
+<!doctype html>
+
+<!-- Head is borrowed and altered from the Udacity Hero HTML-->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Portfolio Site for Winnie Hien</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+
+  <body>
+
+    <header class="header">
+      <div class="header__inner">
+          <img class="header__logo" src="images/pythonLogo.png" alt="Logo">
+          <div class="container1">
+            <h1 class="header__title">Winnie Hien</h1>
+            <p class="header__subtitle">Front End Developer</p>
+          </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="content">
+
+        <div class="main__image">
+          <img class="BostonSkyline" src="images/BostonSkyline.jpeg" alt="Boston Skyline">
+        </div>
+
+        <section class="featured__work">
+          <h2 class="featured__work__title">Featured Work</h2>
+        </section>
+
+        <section class="projects__gallery">
+          <div class="sample__project">
+            <span class="project__thumbnail">
+              <img src="images/MCADLogo.png" alt="MCAD Logo">
+            </span>
+            <h3>MCAD</h3>
+            <a href="http://www.mass.gov/mcad">Learn more</a>
+          </div>
+<!-- Two different image sizes for mobile vs. desktop using picture element-->
+          <div class="sample__project">
+            <picture class="project__thumbnail">
+              <source media="(max-width: 549px)"
+              srcset="images/BTHCsmall.png, images/BTHCsmall.png">
+              <source media="(min-width: 550px)"
+              srcset="images/BostonTaxHelpCoalition.png, images/BostonTaxHelpCoalition.png">
+              <img src="images/BTHCsmall.png" alt="Boston Tax Help Coalition Logo">
+            </picture>
+            <h3>BTHC</h3>
+            <a href="http://www.bostontaxhelp.org">Learn more</a>
+          </div>
+          <div class="sample__project">
+            <span class="project__thumbnail">
+              <img src="images/WinnieHienClimbingRRG.jpg" alt="Picture of Winnie Hien climbing Loompa 10.c at Red River Gorge">
+            </span>
+            <h3>Hobbies</h3>
+            <a href="https://www.linkedin.com/in/winnie-hien-72147640">Learn more</a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </body>

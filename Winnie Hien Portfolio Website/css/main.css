@@ -1,0 +1,272 @@
+body, html {
+  margin: 0;
+  padding: .5em .5em 0 .5em;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: Roboto;
+  font-size: 14px;
+  color: #424242;
+}
+
+main {
+  padding-bottom: 6em;
+}
+
+h1, h3, p {
+  margin: 0;
+}
+
+header, section, div {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/*
+ *
+ * header
+ *
+ */
+
+.header__inner {
+  display: flex;
+  width: 100%;
+  padding-bottom: 1em;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.header__logo {
+  width: 60px;
+  height: 60px;
+}
+
+.header {
+  min-height: 60px;
+  margin-top: 3.5em;
+}
+
+.header__inner {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.header__title {
+  font-weight: 200;
+  font-size: 4em;
+  text-align: right;
+  width: 100%;
+}
+
+.header__subtitle {
+  float: right;
+  font-weight: 200;
+  font-size: 1.5em;
+  width: 100%;
+  text-align: right;
+}
+
+/*
+ *
+ * Main Image
+ *
+ */
+
+.main__image {
+  width: 100%;
+  position: relative;
+  min-height: 200px;
+}
+
+.BostonSkyline {
+  border-top: 2px solid #3F7FBF;
+  padding-top: 1em;
+}
+
+
+/*
+ *
+ * Featured Work
+ *
+ */
+
+.featured__work {
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.featured__work__title {
+  font-weight: 200;
+  font-size: 2.5em;
+  display: inline-block;
+  width: 100%;
+}
+
+ /*
+  *
+  * Featured Projects
+  *
+  */
+
+.projects__gallery {
+  width: 100%;
+  padding: 1em;
+}
+
+.sample__project {
+  width: 100%;
+  padding: 1em .2em 2em .2em;
+  text-align: center;
+}
+
+.project__thumbnail {
+  text-align: center;
+}
+
+.sample__project h3 {
+  font-size: 3em;
+  font-weight: 400;
+  padding: .3em;
+  max-width: 100%;
+  text-align: center;
+}
+
+.sample__project a {
+  font-size: 1.4em;
+  font-weight: 200;
+  max-width: 100%;
+}
+
+
+/*
+*
+* Responsive/Media Queries
+*
+*/
+
+img,
+embed,
+object,
+video {
+  max-width: 100%;
+}
+
+/*
+Minor breakpoint to improve font size and readability
+*/
+
+@media screen and (min-width: 450px) {
+  .sample__project {
+   padding: 2em;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .header__title {
+    font-size: 4.5em;
+  }
+  .header__subtitle {
+    font-size: 1.75em;
+  }
+  .header__logo {
+    width: 70px;
+    height: 70px;
+  }
+  .featured__work__title {
+    font-size: 3em;
+  }
+  .sample__project h3 {
+    font-size: 3.5em;
+  }
+  .sample__project a {
+    font-size: 1.50em;
+  }
+}
+
+/*
+Restructuring sample projects to a 3x1 instead of 1x3 layout
+Swapped out rectangular BTHC logo for square logo
+*/
+
+@media screen and (min-width: 550px) {
+  body {
+    padding: 1em 1em 0 1em;
+  }
+  .projects__gallery{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .sample__project {
+    /* display: inline-block; default? */
+    width: 33.33%;
+    padding: 1.5em;
+  }
+  .sample__project h3 {
+    font-size: 2em;
+  }
+  .sample__project a {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .header__title {
+    font-size: 5.5em;
+  }
+  .header__subtitle {
+    font-size: 2.25em;
+  }
+  .header__logo {
+    width: 90px;
+    height: 90px;
+  }
+  .featured__work__title {
+    font-size: 4em;
+  }
+  .sample__project h3 {
+    font-size: 2.75em;
+  }
+  .sample__project a {
+    font-size: 1.50em;
+  }
+}
+
+
+@media screen and (min-width: 1000px) {
+  main, .header__inner, .content {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .header__title {
+    font-size: 7.5em;
+  }
+  .header__subtitle {
+    font-size: 3.25em;
+  }
+  .header__logo {
+    width: 120px;
+    height: 120px;
+  }
+  .featured__work__title {
+    font-size: 5.5em;
+  }
+  .sample__project h3 {
+    font-size: 3.75em;
+  }
+  .sample__project a {
+    font-size: 2em;
+  }
+}
