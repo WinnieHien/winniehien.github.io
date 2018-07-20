@@ -42,8 +42,8 @@ header, section, div {
 }
 
 .header__logo {
-  width: 160px;
-  height: 160px;
+  width: 150px;
+  height: 150px;
   border-radius: 5px;
 }
 
@@ -164,9 +164,13 @@ video {
 Minor breakpoint to improve font size and readability
 */
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 485px) {
   .sample__project {
    padding: 2em;
+  }
+  .header__logo {
+    width: 80px;
+    height: 80px;
   }
 }
 
@@ -178,8 +182,8 @@ Minor breakpoint to improve font size and readability
     font-size: 1.75em;
   }
   .header__logo {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
   }
   .featured__work__title {
     font-size: 3em;
@@ -230,8 +234,8 @@ Swapped out rectangular BTHC logo for square logo
     font-size: 2.25em;
   }
   .header__logo {
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 120px;
   }
   .featured__work__title {
     font-size: 4em;
