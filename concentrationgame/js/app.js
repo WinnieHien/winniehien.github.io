@@ -214,7 +214,7 @@ function resetGame () {
     movesCounter.classList.remove('red');
     timer.classList.remove('red');
     resetStars();
-    pop_up.close();
+    closePopup();
 }
 
 function displayPopup (){
@@ -226,11 +226,11 @@ function displayPopup (){
     }
     moveStats.innerHTML = 'Moves: '+ moves + ' remaining';
     timeStats.innerHTML = timer.innerHTML;
-    pop_up.showModal(); //showModal is a pre-defined function in JS
+    pop_up.style.display = "block";
 }
 
 function closePopup() {
-    pop_up.close();
+    pop_up.style.display = "none";
 }
 
 
@@ -292,7 +292,7 @@ function gameOver() {
     stopTimer();
     setTimeout(function() {
         displayPopup();
-    }, 250);
+    }, 1300);
 }
 
 //Intialize Game

@@ -198,6 +198,9 @@ h1 {
     padding-top: .1em;
     border-radius: 8px;
     box-shadow: 5px 2px 15px 2px rgba(46, 61, 73, 0.5);
+    position: fixed;
+    background-color: white;
+    display: none;
 }
 
 /*

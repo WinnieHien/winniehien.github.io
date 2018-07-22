@@ -15,6 +15,8 @@ main {
   padding-bottom: 6em;
 }
 
+/* TODO: Remove h3 references from HTML */
+
 h1, h3, p {
   margin: 0;
 }
@@ -188,11 +190,12 @@ Minor breakpoint to improve font size and readability
   .featured__work__title {
     font-size: 3em;
   }
+/* TODO: Delete when h3 is removed
   .sample__project h3 {
     font-size: 3.5em;
-  }
+  } */
   .sample__project a {
-    font-size: 1.50em;
+    font-size: 3.50em;
   }
 }
 
@@ -222,7 +225,7 @@ Swapped out rectangular BTHC logo for square logo
     font-size: 2em;
   }
   .sample__project a {
-    font-size: 1.2em;
+    font-size: 2em;
   }
 }
 
@@ -244,7 +247,7 @@ Swapped out rectangular BTHC logo for square logo
     font-size: 2.75em;
   }
   .sample__project a {
-    font-size: 1.50em;
+    font-size: 2.75em;
   }
 }
 
@@ -272,6 +275,6 @@ Swapped out rectangular BTHC logo for square logo
     font-size: 3.75em;
   }
   .sample__project a {
-    font-size: 2em;
+    font-size: 3.75em;
   }
 }
