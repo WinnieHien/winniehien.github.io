@@ -3,10 +3,28 @@
  * Define variables
  */
 const container = document.querySelector('.cat_container');
+const cat_list = document.querySelector('.cat_list');
+
 const name_list = ['Denali', 'Katahdin', 'Marty', 'Coco', 'Tater'];
+
+// TODO: Add the images and names for other three cats
 const pic_list = ['denali.png', 'katahdin.jpeg'];
 const pic_list_alt = ['Denali the Sealpoint Ragdoll', 'Kathadin the Tail Chaser']
 
+function createCatList() {
+
+    for (let i = 0; i < name_list.length; i++) {
+        let newCat = document.createElement('li');
+        newCat.className = name_list[i];
+        newCat.innerHTML = name_list[i];
+        cat_list.appendChild(newCat);
+    }
+};
+
+createCatList();
+
+createCatDiv(0);
+updateCat(0);
 
 function createCatDiv(i) {
 
@@ -33,9 +51,6 @@ function createCatDiv(i) {
 
 };
 
-createCatDiv(1);
-
-
 function updateCat(i) {
 
     // Add blank Img element
@@ -59,5 +74,3 @@ function updateCat(i) {
     }, false);
 
 };
-
-updateCat(1);
