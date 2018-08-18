@@ -8,11 +8,12 @@ const pic_list = ['denali.png', 'katahdin.jpeg'];
 const pic_list_alt = ['Denali the Sealpoint Ragdoll', 'Kathadin the Tail Chaser']
 
 
-function createCatDiv() {
+function createCatDiv(i) {
 
     // Create Container for new cats
     let newDiv = document.createElement('div');
     newDiv.className = 'cat';
+    newDiv.classList.add(name_list[i]);
     container.appendChild(newDiv);
 
     // Add blank Img element
@@ -32,7 +33,7 @@ function createCatDiv() {
 
 };
 
-createCatDiv();
+createCatDiv(1);
 
 
 function updateCat(i) {
@@ -45,19 +46,18 @@ function updateCat(i) {
     // Add Name
     let name = document.querySelector('.name');
     name.innerHTML = 'My name is ' + name_list[i];
-    name.classList.add(name_list[i]);
 
-    // Add Counter
-    let counter = document.querySelector('.counter');
-    let count = 1; // TODO: Change from static to dynamic counter
-    counter.innerHTML = name_list[i] + ' clicked ' + count + ' time(s)!';
+    // Add Counter and Click Event Listener
+
+    count = 0;
+    let cat = document.querySelector('.cat .pic')
+
+    cat.addEventListener('click', (e) => {
+        count++;
+        console.log('clicked ' + count + ' time(s)');
+        document.querySelector('.counter').innerHTML = name_list[i] + ' clicked ' + count + ' time(s)!';
+    }, false);
+
 };
 
 updateCat(1);
-
-
-// denali.addEventListener('click', (e) => {
-//     counter_d++;
-//     console.log('clicked ' + counter_d + ' time(s)');
-//     document.querySelector('.click_counter_d').innerHTML = 'Denali clicked ' + counter_d + ' time(s)!';
-// }, false);
