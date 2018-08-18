@@ -8,14 +8,15 @@ const cat_list = document.querySelector('.cat_list');
 const name_list = ['Denali', 'Katahdin', 'Marty', 'Coco', 'Tater'];
 
 // TODO: Add the images and names for other three cats
-const pic_list = ['denali.png', 'katahdin.jpeg'];
-const pic_list_alt = ['Denali the Sealpoint Ragdoll', 'Kathadin the Tail Chaser']
+const pic_list = ['denali.png', 'katahdin.jpeg', 'marty.jpeg', 'coco.jpeg', 'tater.jpeg'];
+const pic_list_alt = ['Denali the Sealpoint Ragdoll', 'Kathadin the Tail Chaser', 'Marty the Scaredy Cat', 'Coco the Runt of the Litter', 'Tater the All American Child']
 
 function createCatList() {
 
     for (let i = 0; i < name_list.length; i++) {
         let newCat = document.createElement('li');
         newCat.className = name_list[i];
+        newCat.classList.add('selection');
         newCat.innerHTML = name_list[i];
         cat_list.appendChild(newCat);
     }
@@ -23,8 +24,36 @@ function createCatList() {
 
 createCatList();
 
-createCatDiv(0);
-updateCat(0);
+// function catSelection() {
+//     for (let i = 0; i < name_list.length; i++) {
+//         let cat_selected = // document.querySelector the individual li
+//         cat_selected.addEventListener('click', (e) => {
+//             console.log('Selected: individual li');
+//
+//         }, false);
+//     }
+//
+//
+// };
+
+// for (let i = 0; i < name_list.length; i++) {
+//     let newCat = document.createElement('li');
+//     newCat.className = name_list[i];
+//     newCat.innerHTML = name_list[i];
+//     cat_list.appendChild(newCat);
+//
+// cat.addEventListener('click', (e) => {
+//     count++;
+//     console.log('clicked ' + count + ' time(s)');
+//     document.querySelector('.counter').innerHTML = name_list[i] + ' clicked ' + count + ' time(s)!';
+// }, false);
+
+
+createCatDiv(3);
+updateCat(3);
+
+
+
 
 function createCatDiv(i) {
 
@@ -64,7 +93,8 @@ function updateCat(i) {
 
     // Add Counter and Click Event Listener
 
-    count = 0;
+    // TODO: Create closure around the count variable using the previous lesson
+    let count = 0;
     let cat = document.querySelector('.cat .pic')
 
     cat.addEventListener('click', (e) => {
