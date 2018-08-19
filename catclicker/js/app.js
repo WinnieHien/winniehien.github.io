@@ -14,7 +14,7 @@ const pic_list_alt = ['Denali the Sealpoint Ragdoll', 'Kathadin the Tail Chaser'
 function createCatList() {
 
     for (let i = 0; i < name_list.length; i++) {
-        let newCat = document.createElement('li');
+        let newCat = document.createElement('button');
         newCat.className = name_list[i];
         newCat.classList.add('selection');
         newCat.innerHTML = name_list[i];
@@ -24,17 +24,16 @@ function createCatList() {
 
 createCatList();
 
-// function catSelection() {
-//     for (let i = 0; i < name_list.length; i++) {
-//         let cat_selected = // document.querySelector the individual li
-//         cat_selected.addEventListener('click', (e) => {
-//             console.log('Selected: individual li');
-//
-//         }, false);
-//     }
-//
-//
-// };
+// TODO: Asked this question and will need to check in again on the answer. Having difficulty learnign how to select the button for each name_list[i] element
+
+// function bindButtontoCat(i) {
+//     let cat_selected = document.querySelector(name_list[i] + '.selection')
+//     // cat_selected.addEventListener('click', (e) => {
+//     //     console.log('Selected: individual li');
+//     //
+//     // }, false);
+//     // }
+// }
 
 // for (let i = 0; i < name_list.length; i++) {
 //     let newCat = document.createElement('li');
