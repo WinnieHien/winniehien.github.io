@@ -45,3 +45,7 @@ button {
 #cat-img {
   max-width: 50%;
 }
+
+.hidden {
+    display: none;
+}

@@ -50,6 +50,7 @@ let octopus = {
         // initialize the list view, and the first cat view
         catListView.init();
         catView.init();
+        adminView.init();
     },
 
     // Needs to reference the clicked cat
@@ -69,7 +70,13 @@ let octopus = {
     incrementCounter: function () {
         model.currentCat.clickCount++;
         catView.render();
+    },
+
+    toggleForms: function () {
+
+        form.classList.toggle('hidden');
     }
+
 };
 
 let catView = {
@@ -143,5 +150,29 @@ let catListView = {
 
     },
 };
+
+let adminView = {
+    init: function () {
+
+        // Store pointers to the Admin element
+        admin = document.getElementById('admin');
+        form = document.querySelector('.form');
+
+        // On click, toggle off the hidden default forms
+        admin.addEventListener('click', function(e) {
+            console.log('admin button clicked');
+            octopus.toggleForms();
+        });
+
+        // Render the admin forms
+        // this.render();
+    },
+
+    // render: function () {
+    //     console.log('Rendering admin View')
+    //
+    // }
+};
+
 
 octopus.init();
