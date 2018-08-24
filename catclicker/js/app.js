@@ -1,105 +1,147 @@
 
-/*
- * Define variables
- */
-const container = document.querySelector('.cat_container');
-const cat_list = document.querySelector('.cat_list');
 
-const name_list = ['Denali', 'Katahdin', 'Marty', 'Coco', 'Tater'];
+/* ======= Model ======= */
 
-// TODO: Add the images and names for other three cats
-const pic_list = ['denali.png', 'katahdin.jpeg', 'marty.jpeg', 'coco.jpeg', 'tater.jpeg'];
-const pic_list_alt = ['Denali the Sealpoint Ragdoll', 'Kathadin the Tail Chaser', 'Marty the Scaredy Cat', 'Coco the Runt of the Litter', 'Tater the All American Child']
+let model = {
 
-function createCatList() {
+    // Set current cat to default. Will be updated by set current cat function
+    currentCat: null,
+    cats: [
+        {
+            clickCount : 0,
+            name : 'Denali',
+            imgAlt : 'Denali the Sealpoint Ragdoll',
+            imgSrc : 'images/denali.png'
+        },
+        {
+            clickCount : 0,
+            name : 'Katahdin',
+            imgAlt : 'Mischievious Katahdin',
+            imgSrc : 'images/katahdin.jpeg'
+        },
+        {
+            clickCount : 0,
+            name : 'Marty',
+            imgAlt : 'Scaredy Marty',
+            imgSrc : 'images/marty.jpeg'
+        },
+        {
+            clickCount : 0,
+            name : 'Coco',
+            imgAlt : 'Runt of the Litter Coco',
+            imgSrc : 'images/coco.jpeg'
+        },
+        {
+            clickCount : 0,
+            name : 'Tater',
+            imgAlt : 'Tater the All American Child',
+            imgSrc : 'images/tater.jpeg'
+        }
+    ]
+};
 
-    for (let i = 0; i < name_list.length; i++) {
-        let newCat = document.createElement('button');
-        newCat.className = name_list[i];
-        newCat.classList.add('selection');
-        newCat.innerHTML = name_list[i];
-        cat_list.appendChild(newCat);
+
+let octopus = {
+
+    init: function () {
+        // Set current cat to first cat
+        model.currentCat = model.cats[0];
+
+        // initialize the list view, and the first cat view
+        catListView.init();
+        catView.init();
+    },
+
+    // Needs to reference the clicked cat
+    setCurrentCat: function (cat) {
+        model.currentCat = cat;
+    },
+
+    getCurrentCat: function () {
+        return model.currentCat;
+    },
+
+
+    getCats: function () {
+        return model.cats;
+    },
+
+    incrementCounter: function () {
+        model.currentCat.clickCount++;
+        catView.render();
     }
 };
 
-createCatList();
+let catView = {
+    init: function () {
 
-// TODO: Asked this question and will need to check in again on the answer. Having difficulty learnign how to select the button for each name_list[i] element
+        // Store pointers to the Dom Cat element
+        this.cat = document.getElementById('cat');
+        this.catName = document.getElementById('cat-name');
+        this.catImage = document.getElementById('cat-img');
+        this.catCounter = document.getElementById('cat-counter');
 
-// function bindButtontoCat(i) {
-//     let cat_selected = document.querySelector(name_list[i] + '.selection')
-//     // cat_selected.addEventListener('click', (e) => {
-//     //     console.log('Selected: individual li');
-//     //
-//     // }, false);
-//     // }
-// }
+        // On click, increment cat counter
+        this.catImage.addEventListener('click', (e) => {
+            octopus.incrementCounter();
+            console.log('clicked');
+        });
 
-// for (let i = 0; i < name_list.length; i++) {
-//     let newCat = document.createElement('li');
-//     newCat.className = name_list[i];
-//     newCat.innerHTML = name_list[i];
-//     cat_list.appendChild(newCat);
-//
-// cat.addEventListener('click', (e) => {
-//     count++;
-//     console.log('clicked ' + count + ' time(s)');
-//     document.querySelector('.counter').innerHTML = name_list[i] + ' clicked ' + count + ' time(s)!';
-// }, false);
+        // Render the cat view
+        this.render();
+    },
 
-
-createCatDiv(3);
-updateCat(3);
-
-
-
-
-function createCatDiv(i) {
-
-    // Create Container for new cats
-    let newDiv = document.createElement('div');
-    newDiv.className = 'cat';
-    newDiv.classList.add(name_list[i]);
-    container.appendChild(newDiv);
-
-    // Add blank Img element
-    let pic = document.createElement('img');
-    pic.className = 'pic';
-    document.querySelector('.cat').appendChild(pic);
-
-    // Add blank Name element
-    let name = document.createElement('h2');
-    name.className = 'name';
-    document.querySelector('.cat').appendChild(name);
-
-    // Add blank Counter element
-    let counter = document.createElement('h3');
-    counter.className = 'counter';
-    document.querySelector('.cat').appendChild(counter);
-
+    render: function () {
+        let currentCat = octopus.getCurrentCat();
+        this.catName.textContent = currentCat.name;
+        this.catImage.src = currentCat.imgSrc;
+        this.catImage.alt = currentCat.imgAlt;
+        this.catCounter.textContent = 'Clicked ' + currentCat.clickCount + ' time(s)!';
+    }
 };
 
-function updateCat(i) {
+let catListView = {
+    init: function () {
+        // Get the cat list ul element so it can be used to store the rendered cats
+        // Can access it from the render function
+        this.catList = document.getElementById('cat-list');
+        this.render();
 
-    // Add blank Img element
-    let pic = document.querySelector('.pic');
-    pic.src = 'images/' + pic_list[i];
-    pic.alt = pic_list_alt[i];
+        // This is the document?
+    },
 
-    // Add Name
-    let name = document.querySelector('.name');
-    name.innerHTML = 'My name is ' + name_list[i];
+    render: function () {
 
-    // Add Counter and Click Event Listener
+        let cat, i, button, cats;
+        // Will get cat list from the Model using the Octopus TODO: octopus get cat function
+        cats = octopus.getCats();
 
-    // TODO: Create closure around the count variable using the previous lesson
-    let count = 0;
-    let cat = document.querySelector('.cat .pic')
+        // Empty the innerHTML before creating the cat list. TODO: Is this neccessary?
+        this.catList.innerHTML = '';
 
-    cat.addEventListener('click', (e) => {
-        count++;
-        console.log('clicked ' + count + ' time(s)');
-        document.querySelector('.counter').innerHTML = name_list[i] + ' clicked ' + count + ' time(s)!';
-    }, false);
+        for (i = 0; i < cats.length; i++) {
+            cat = cats[i];
+            button = document.createElement('button');
+            // button.className = cat.name
+            button.textContent = cat.name;
 
+
+            // I think you add the return function to deal with the closure issues
+
+            // TODO: Add click function to the cat List to render View 2
+
+            button.addEventListener('click', (function(catCopy) {
+                return function() {
+                    octopus.setCurrentCat(catCopy);
+                    catView.render();
+                };
+            })(cat));
+
+            this.catList.appendChild(button);
+        }
+
+
+    },
 };
+
+octopus.init();

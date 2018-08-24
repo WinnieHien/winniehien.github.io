@@ -1,0 +1,47 @@
+body, html {
+  margin: 0;
+  padding: .5em .5em 0 .5em;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+body {
+  font-family: Roboto;
+  font-size: 14px;
+  color: #424242;
+}
+
+main {
+  padding-bottom: 6em;
+  text-align: center;
+}
+
+/* TODO: Remove h3 references from HTML */
+
+h2 {
+  font-size: 60px;
+  padding: auto;
+  margin: auto;
+}
+
+ul {
+    max-width: 50%;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    padding: 0;
+}
+
+button {
+    font-size:1em;
+    background-color: #a6a6a6;
+    padding: auto;
+    margin: auto;
+    border-radius: 10px;
+}
+
+#cat-img {
+  max-width: 50%;
+}
