@@ -62,6 +62,9 @@ let octopus = {
         return model.currentCat;
     },
 
+    getCurrentCount: function () {
+        return model.currentCat.clickCount;
+    },
 
     getCats: function () {
         return model.cats;
@@ -73,7 +76,6 @@ let octopus = {
     },
 
     toggleForms: function () {
-
         form.classList.toggle('hidden');
     }
 
@@ -141,6 +143,7 @@ let catListView = {
                 return function() {
                     octopus.setCurrentCat(catCopy);
                     catView.render();
+                    adminView.render();
                 };
             })(cat));
 
@@ -162,16 +165,20 @@ let adminView = {
         admin.addEventListener('click', function(e) {
             console.log('admin button clicked');
             octopus.toggleForms();
+            adminView.render();
         });
-
-        // Render the admin forms
-        // this.render();
     },
 
-    // render: function () {
-    //     console.log('Rendering admin View')
-    //
-    // }
+    render: function () {
+        let currentCat = octopus.getCurrentCat();
+        form.cat_name.value = currentCat.name;
+        form.cat_url.value = currentCat.imgSrc;
+
+        // currentCat.clickCount was permanently stuck at 0. Fix is to put adminView.render(); within the event listener.
+        form.cat_clicks.value = currentCat.clickCount;
+
+
+    }
 };
 
 
