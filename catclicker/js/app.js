@@ -1,5 +1,8 @@
 
 
+
+
+
 /* ======= Model ======= */
 
 let model = {
@@ -176,9 +179,29 @@ let adminView = {
 
         // currentCat.clickCount was permanently stuck at 0. Fix is to put adminView.render(); within the event listener.
         form.cat_clicks.value = currentCat.clickCount;
+    },
 
+    checkupdate: function () {
+        console.log('The checkupdate function ran via onclick method');
+    },
+
+    update: function () {
+
+        // Having issues understanding this part.
+        console.log('The update function ran via onclick method');
+
+        let new_name, new_url, new_count, form
+
+        new_name = form.cat_name.value;
+        new_url = form.cat_url.value;
+        new_count = form.cat_clicks.value;
+
+        // TODO: Find a way to submit the inputs!
+        octopus.setCurrentCat();
+        catView.render();
 
     }
+
 };
 
 
