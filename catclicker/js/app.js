@@ -119,7 +119,7 @@ let octopus = {
         // Set current cat to first cat
         model.currentCat = model.cats[0];
 
-        // initialize the list view, and the first cat view
+        // initialize the list view, the first cat view, and the admin button
         catListView.init();
         catView.init();
         adminView.init();
@@ -129,17 +129,6 @@ let octopus = {
     setCurrentCat: function (cat) {
         model.currentCat = cat;
     },
-
-
-
-    /// TODO: See if this is the way to go about updating the currentCat info.
-    // setNewCat: function (cat) {
-    //     model.currentCat.clickCount = cat;
-    //     model.currentCat.name =
-    //     model.currentCat.imgSrc =
-    //     model.currentCat.imgAlt =
-    // },
-
 
     getCurrentCat: function () {
         return model.currentCat;
@@ -171,15 +160,16 @@ let adminView = {
         admin = document.getElementById('admin');
         form = document.querySelector('.form');
 
-        // On click, toggle off the hidden default forms
+        // On click, toggle on/off the hidden default forms
         admin.addEventListener('click', function(e) {
             octopus.toggleForms();
-            adminView.render();
         });
+
+        adminView.render(); // Load initial cat data into admin panel
     },
 
 
-    // Fills admin panel with currentCat data *** WORKS ***
+    // Fills admin panel with currentCat data
     render: function () {
         let currentCat = octopus.getCurrentCat();
         form.cat_name.value = currentCat.name;
@@ -187,42 +177,20 @@ let adminView = {
         form.cat_clicks.value = currentCat.clickCount;
     },
 
-
-    // Need to look into this TODO
+    // Update the cat display if data is changed via the admin panel
     update: function () {
 
-        console.log('starting update function')
+        // Get the current cat variable
+        let currentCat = octopus.getCurrentCat();
 
-        let new_name, new_url, new_count, form
-        currentCat_name = form.cat_name.value;
-        new_url = form.cat_url.value;
-        new_count = form.cat_clicks.value;
+        // Set the current cat values to the new form values on the right
+        currentCat.name = form.cat_name.value;
+        currentCat.imgSrc = form.cat_url.value;
+        currentCat.clickCount = form.cat_clicks.value;
 
-        console.log('variables for new are set')
-        octopus.setCurrentCat();
-        console.log('octupus set CurrentCat applied')
+        // Render the new cat view
         catView.render();
-        console.log('render applied')
-
-        octopus.setNewCat();
-
-        // need to add a button dom element reference
-        // submit = document.querySelector('#submit');
-        // submit.addEventListener('click', (function(newCat) {
-        //     return function() {
-        //         octopus.setCurrentCat(newCat);
-        //         catView.render();
-        //         adminView.render();
-        //     };
-        // })(cat));
-
-        let newCat = octopus.getNewCat();
-        newCat_name = form.cat_name.value;
-        newCat_url = form.cat_url.value;
-        newCat_count = form.cat_clicks.value;
-        octopus.updateCatModel();
     }
 };
-
 
 octopus.init();
