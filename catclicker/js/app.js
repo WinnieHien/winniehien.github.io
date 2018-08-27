@@ -1,8 +1,3 @@
-
-
-
-
-
 /* ======= Model ======= */
 
 let model = {
@@ -44,6 +39,80 @@ let model = {
 };
 
 
+
+
+let catView = {
+    init: function () {
+
+        // Store pointers to the Dom Cat element
+        this.cat = document.getElementById('cat');
+        this.catName = document.getElementById('cat-name');
+        this.catImage = document.getElementById('cat-img');
+        this.catCounter = document.getElementById('cat-counter');
+
+        // On click, increment cat counter using Octopus
+        this.catImage.addEventListener('click', (e) => {
+            octopus.incrementCounter();
+            adminView.render(); // Updates the adminView as the counter is clicked.
+        });
+
+        // Render the cat view
+        this.render();
+    },
+
+    render: function () {
+        let currentCat = octopus.getCurrentCat();
+        // Uses the octopus to return the model.currentCat array
+
+        // Pulls the data from current Cat into the HTML elements
+        this.catName.textContent = currentCat.name;
+        this.catImage.src = currentCat.imgSrc;
+        this.catImage.alt = currentCat.imgAlt;
+        this.catCounter.textContent = 'Clicked ' + currentCat.clickCount + ' time(s)!';
+    }
+};
+
+let catListView = {
+    init: function () {
+        // Get the cat list ul element so it can be used to store the rendered cats
+        // Can access it from the render function
+        this.catList = document.getElementById('cat-list');
+        this.render();
+    },
+
+    render: function () {
+        // Initialize variables ued in render function
+        let cat, i, button, cats;
+
+        // Will get cat list from the Model using the Octopus
+        cats = octopus.getCats();
+
+        // Empty the innerHTML before creating the cat list.
+        this.catList.innerHTML = '';
+
+        for (i = 0; i < cats.length; i++) {
+            cat = cats[i];
+            button = document.createElement('button');
+            button.textContent = cat.name;
+
+
+            // TODO: Figure out purpose of return function. I think it's to deal with the closure issues. Check the lesson guidance.
+
+            button.addEventListener('click', (function(catCopy) { // When any of the buttons are clicked, catCopy gets returned to setCurrentCat in the octopus, which will update the current cat.
+                return function() {
+                    octopus.setCurrentCat(catCopy);
+                    catView.render(); // Re-render the cat view
+                    adminView.render(); // Updates the admin panel with the newly selected cat information.
+                    octopus.toggleForms();
+                };
+            })(cat));
+
+            // Append the button to the cat list.
+            this.catList.appendChild(button);
+        }
+    },
+};
+
 let octopus = {
 
     init: function () {
@@ -60,6 +129,17 @@ let octopus = {
     setCurrentCat: function (cat) {
         model.currentCat = cat;
     },
+
+
+
+    /// TODO: See if this is the way to go about updating the currentCat info.
+    // setNewCat: function (cat) {
+    //     model.currentCat.clickCount = cat;
+    //     model.currentCat.name =
+    //     model.currentCat.imgSrc =
+    //     model.currentCat.imgAlt =
+    // },
+
 
     getCurrentCat: function () {
         return model.currentCat;
@@ -84,124 +164,64 @@ let octopus = {
 
 };
 
-let catView = {
-    init: function () {
 
-        // Store pointers to the Dom Cat element
-        this.cat = document.getElementById('cat');
-        this.catName = document.getElementById('cat-name');
-        this.catImage = document.getElementById('cat-img');
-        this.catCounter = document.getElementById('cat-counter');
-
-        // On click, increment cat counter
-        this.catImage.addEventListener('click', (e) => {
-            octopus.incrementCounter();
-            console.log('clicked');
-        });
-
-        // Render the cat view
-        this.render();
-    },
-
-    render: function () {
-        let currentCat = octopus.getCurrentCat();
-        this.catName.textContent = currentCat.name;
-        this.catImage.src = currentCat.imgSrc;
-        this.catImage.alt = currentCat.imgAlt;
-        this.catCounter.textContent = 'Clicked ' + currentCat.clickCount + ' time(s)!';
-    }
-};
-
-let catListView = {
-    init: function () {
-        // Get the cat list ul element so it can be used to store the rendered cats
-        // Can access it from the render function
-        this.catList = document.getElementById('cat-list');
-        this.render();
-
-        // This is the document?
-    },
-
-    render: function () {
-
-        let cat, i, button, cats;
-        // Will get cat list from the Model using the Octopus TODO: octopus get cat function
-        cats = octopus.getCats();
-
-        // Empty the innerHTML before creating the cat list. TODO: Is this neccessary?
-        this.catList.innerHTML = '';
-
-        for (i = 0; i < cats.length; i++) {
-            cat = cats[i];
-            button = document.createElement('button');
-            // button.className = cat.name
-            button.textContent = cat.name;
-
-
-            // I think you add the return function to deal with the closure issues
-
-            // TODO: Add click function to the cat List to render View 2
-
-            button.addEventListener('click', (function(catCopy) {
-                return function() {
-                    octopus.setCurrentCat(catCopy);
-                    catView.render();
-                    adminView.render();
-                };
-            })(cat));
-
-            this.catList.appendChild(button);
-        }
-
-
-    },
-};
 
 let adminView = {
     init: function () {
-
-        // Store pointers to the Admin element
         admin = document.getElementById('admin');
         form = document.querySelector('.form');
 
         // On click, toggle off the hidden default forms
         admin.addEventListener('click', function(e) {
-            console.log('admin button clicked');
             octopus.toggleForms();
             adminView.render();
         });
     },
 
+
+    // Fills admin panel with currentCat data *** WORKS ***
     render: function () {
         let currentCat = octopus.getCurrentCat();
         form.cat_name.value = currentCat.name;
         form.cat_url.value = currentCat.imgSrc;
-
-        // currentCat.clickCount was permanently stuck at 0. Fix is to put adminView.render(); within the event listener.
         form.cat_clicks.value = currentCat.clickCount;
     },
 
-    checkupdate: function () {
-        console.log('The checkupdate function ran via onclick method');
-    },
 
+    // Need to look into this TODO
     update: function () {
 
-        // Having issues understanding this part.
-        console.log('The update function ran via onclick method');
+        console.log('starting update function')
 
         let new_name, new_url, new_count, form
-
-        new_name = form.cat_name.value;
+        currentCat_name = form.cat_name.value;
         new_url = form.cat_url.value;
         new_count = form.cat_clicks.value;
 
-        // TODO: Find a way to submit the inputs!
+        console.log('variables for new are set')
         octopus.setCurrentCat();
+        console.log('octupus set CurrentCat applied')
         catView.render();
+        console.log('render applied')
 
+        octopus.setNewCat();
+
+        // need to add a button dom element reference
+        // submit = document.querySelector('#submit');
+        // submit.addEventListener('click', (function(newCat) {
+        //     return function() {
+        //         octopus.setCurrentCat(newCat);
+        //         catView.render();
+        //         adminView.render();
+        //     };
+        // })(cat));
+
+        let newCat = octopus.getNewCat();
+        newCat_name = form.cat_name.value;
+        newCat_url = form.cat_url.value;
+        newCat_count = form.cat_clicks.value;
+        octopus.updateCatModel();
     }
-
 };
 
 
