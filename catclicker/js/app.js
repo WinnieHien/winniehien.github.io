@@ -103,7 +103,6 @@ let catListView = {
                     octopus.setCurrentCat(catCopy);
                     catView.render(); // Re-render the cat view
                     adminView.render(); // Updates the admin panel with the newly selected cat information.
-                    octopus.toggleForms();
                 };
             })(cat));
 
