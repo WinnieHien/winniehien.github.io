@@ -239,6 +239,8 @@ nav h1 a {
 #restaurant-address {
   font-size: 12pt;
   margin: 10px 0px;
+  width: 100%;
+  text-align: center;
 }
 #restaurant-cuisine {
   background-color: #333;
@@ -262,7 +264,7 @@ nav h1 a {
   justify-content: center;
 }
 #reviews-container {
-  padding: 30px 40px 80px;
+  padding: 0px 0px 80px;
 }
 #reviews-container h2 {
   color: #f58500;

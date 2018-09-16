@@ -20,12 +20,12 @@
 	}
 }
 
-@media screen and (min-width: 1250px) {
+@media screen and (min-width: 1400px) {
 	body {
 	  background-color: #ffffff;
 	}
-	main, header, nav, #footer, .filter-options, #maincontent, .inside footer {
-      width: 1250px;
+	main, header, nav, #footer, .filter-options, .inside {
+      width: 1400px;
       margin-left: auto;
       margin-right: auto;
     }
