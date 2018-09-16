@@ -294,3 +294,48 @@ nav h1 a {
 #restaurant-hours td {
   color: #666;
 }
+
+
+/* @media screen and (max-width: 770px) {
+	#breadcrumb, .inside #map-container {
+		width: 100%;
+	}
+
+	.inside #map-container {
+		height: 400px;
+	}
+
+	#restaurant-container {
+		padding: 390px, 0px, 30px;
+		width: 100%
+	}
+} */
+
+
+/* @media screen and (min-width: 768px) {
+	#restaurants-list li {
+		width: 39%;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	#restaurants-list li {
+		width: 25%;
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	body {
+	  background-color: #ffffff;
+	}
+	main, header, nav, #footer, .filter-options, .inside {
+      width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+	.filter-options, #footer {
+	  padding: 	1em 0 1em 0;
+	}
+
+
+} */
