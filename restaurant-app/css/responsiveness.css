@@ -1,0 +1,37 @@
+/* TODO: Media queries to make ipad, and other sized websites responsive.  */
+/*
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+} */
+
+/* @media screen and (max-width: 460px) {
+
+} */
+
+@media screen and (min-width: 768px) {
+	#restaurants-list li {
+		width: 39%;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	#restaurants-list li {
+		width: 25%;
+	}
+}
+
+@media screen and (min-width: 1250px) {
+	body {
+	  background-color: #ffffff;
+	}
+	main, header, nav, #footer, .filter-options, #maincontent, .inside footer {
+      width: 1250px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+	.filter-options, #footer {
+	  padding: 	1em 0 1em 0;
+	}
+
+
+}

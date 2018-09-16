@@ -40,7 +40,6 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 #maincontent {
   background-color: #f3f3f3;
   min-height: 100%;
-  /* TODO: FLEX */
 }
 #footer {
   background-color: #444;
@@ -191,11 +190,19 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Details ====================== */
+
+#detailcontainer {
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .inside header {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+  display: flex; 						/*Add flexbox */
+  flex-wrap: wrap;
 }
 .inside #map-container {
   background: blue none repeat scroll 0 0;
@@ -213,7 +220,7 @@ nav h1 a {
 .inside #footer {
   bottom: 0;
   position: absolute;
-  width: 50%;
+  width: 100%;
 }
 #restaurant-name {
   color: #f18200;
@@ -227,6 +234,7 @@ nav h1 a {
 }
 #restaurant-img {
 	width: 90%;
+	height: 90%;
 }
 #restaurant-address {
   font-size: 12pt;
@@ -247,13 +255,8 @@ nav h1 a {
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
+  padding: 140px 0px 30px;
   width: 50%;
-
-
-  /* Added Flexbox  */
-  /* TODO: Not sure if adding this helped  Part of figuring out why the map on the detail page is fixed/won't accommodate other information o the page*/
-
   display: flex; 						/*Add flexbox */
   flex-wrap: wrap;
   justify-content: center;
@@ -270,16 +273,16 @@ nav h1 a {
 }
 #reviews-list {
   margin: 0;
-  padding: 0;
+  padding: auto;
 }
 #reviews-list li {
   background-color: #fff;
-    border: 2px solid #f3f3f3;
+  border: 2px solid #f3f3f3;
   display: block;
   list-style-type: none;
   margin: 0 0 30px;
   overflow: hidden;
-  padding: 0 20px 20px;
+  padding: 20px;
   position: relative;
   width: 85%;
 }
@@ -288,43 +291,4 @@ nav h1 a {
 }
 #restaurant-hours td {
   color: #666;
-}
-
-
-/* TODO: Media queries to make ipad, and other sized websites responsive.  */
-/*
-
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-} */
-
-/* @media screen and (max-width: 460px) {
-
-} */
-
-@media screen and (min-width: 768px) {
-	#restaurants-list li {
-		width: 39%;
-	}
-}
-
-@media screen and (min-width: 1024px) {
-	#restaurants-list li {
-		width: 25%;
-	}
-}
-
-@media screen and (min-width: 1250px) {
-	body {
-	  background-color: #ffffff;
-	}
-	main, header, nav, #footer, .filter-options, #maincontent {
-      width: 1250px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-	.filter-options, #footer {
-	  padding: 	1em 0 1em 0;
-	}
-
-
 }
