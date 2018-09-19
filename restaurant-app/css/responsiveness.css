@@ -10,7 +10,7 @@
 
 
 
-/* TODO: Add media queries without it messing up everything else. Can't get the map on the details page to move off the screen during a scroll */
+/* TODO: Add media queries without it messing up everything else. Can't get the map on the details page to move off the screen during a scrollgit  */
 
 @media screen and (max-width: 770px) {
 	#breadcrumb, #map-container {

@@ -207,7 +207,7 @@ nav h1 a {
 .inside #map-container {
   background: blue none repeat scroll 0 0;
   height: 87%;
-  position: fixed;
+  position: static;
   right: 0;
   top: 80px;
   width: 50%;
@@ -219,7 +219,7 @@ nav h1 a {
 }
 .inside #footer {
   bottom: 0;
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
 }
 #restaurant-name {
@@ -275,14 +275,14 @@ nav h1 a {
 }
 #reviews-list {
   margin: 0;
-  padding: auto;
+  padding-left: 0;
 }
 #reviews-list li {
   background-color: #fff;
   border: 2px solid #f3f3f3;
   display: block;
   list-style-type: none;
-  margin: 0 0 30px;
+  margin-bottom: 30px;
   overflow: hidden;
   padding: 20px;
   position: relative;
@@ -293,10 +293,11 @@ nav h1 a {
 }
 #restaurant-hours td {
   color: #666;
+  margin: auto;
 }
 
 
-/* @media screen and (max-width: 770px) {
+@media screen and (max-width: 770px) {
 	#breadcrumb, .inside #map-container {
 		width: 100%;
 	}
@@ -306,18 +307,34 @@ nav h1 a {
 	}
 
 	#restaurant-container {
-		padding: 390px, 0px, 30px;
-		width: 100%
+		padding-top: 20px;
+		width: 100%;
 	}
-} */
 
-
-/* @media screen and (min-width: 768px) {
-	#restaurants-list li {
-		width: 39%;
+	#reviews-container {
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
 	}
 }
 
+
+@media screen and (min-width: 768px) {
+	#restaurants-list li {
+		width: 39%;
+	}
+
+	.inside #map-container {
+	  height: 87%;
+	  position: fixed;
+	}
+
+	#footer {
+		position: absolute;
+	}
+
+}
+/*
 @media screen and (min-width: 1024px) {
 	#restaurants-list li {
 		width: 25%;
