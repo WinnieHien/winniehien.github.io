@@ -297,7 +297,7 @@ nav h1 a {
 }
 
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 768px) {
 	#breadcrumb, .inside #map-container {
 		width: 100%;
 	}
@@ -316,10 +316,13 @@ nav h1 a {
 		margin-left: auto;
 		margin-right: auto;
 	}
+	#reviews-list li {
+		width: 92%;
+	}
 }
 
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px and max-width: 1249px) {
 	#restaurants-list li {
 		width: 39%;
 	}
@@ -331,22 +334,23 @@ nav h1 a {
 
 	#footer {
 		position: absolute;
+		width: 100%
 	}
 
 }
-/*
+
 @media screen and (min-width: 1024px) {
 	#restaurants-list li {
 		width: 25%;
 	}
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1250px) {
 	body {
-	  background-color: #ffffff;
+	  background-color: #ffffff;  
 	}
-	main, header, nav, #footer, .filter-options, .inside {
-      width: 1400px;
+	body, #map, nav, #footer, .filter-options {
+      width: 1250px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -355,4 +359,4 @@ nav h1 a {
 	}
 
 
-} */
+}
