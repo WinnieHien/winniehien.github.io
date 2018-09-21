@@ -14,23 +14,24 @@
 </head>
 
 <body>
-  <header>
+  <header role="banner">
     <nav>
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
+    <a href="#maincontent" class="skip-link"> Skip to Main Content</a>
   </header>
 
-  <main id="maincontent">
+  <main role="main" id="maincontent">
     <section id="map-container">
-      <div id="map"></div>
+      <div aria-label="restaurant locations" id="map"></div>
     </section>
     <section>
-      <div class="filter-options">
-        <h2>Filter Results</h2>
-        <select aria-labelledby='Select a Neighborhood' id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+      <div  class="filter-options">
+        <h2 aria-labelledby='Restaurant <Filters></Filters>'>Filter Results</h2>
+        <select aria-labelledby='Select Neighborhood' id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
           <option value="all">All Neighborhoods</option>
         </select>
-        <select aria-labelledby='Select a Cuisine' id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+        <select tabindex = '0' aria-labelledby='Select Cuisine' id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
           <option value="all">All Cuisines</option>
         </select>
       </div>
@@ -43,7 +44,7 @@
   <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initMap"></script> -->
 
 
-  <footer id="footer">
+  <footer role= "contentinfo" id="footer">
     Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
 

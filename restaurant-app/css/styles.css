@@ -292,6 +292,17 @@ nav h1 a {
   margin: auto;
 }
 
+.skip-link {
+	/* taken from accssibility NC Accessibility page */
+	left:-999px;
+    position:absolute;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    z-index:-999;
+}
+
 @media screen and (max-width: 500px) {
 
 	#reviews-list li {
